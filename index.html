@@ -16,13 +16,33 @@
     </form>
     <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
     <script>
+        const options = {
+    	token: false
+    }
+    
+    function setupOptions () {
+    	const urlParams = new URLSearchParams(document.location.search);
+    
+    	for (const option in options){
+    
+    		if (!urlParams.has(option)){
+    			continue;
+    		}
+    		options[option] = urlParams.get(option);
+    	}
+    
+    	if (options.token) {
+            let token = options.token;
+    	}
+    }
         let tg = window.Telegram.WebApp;
         let order = document.getElementById("order");
 
         order.addEventListener("click", () => {
             let name = document.getElementById("user_name").value
             let data = {
-                name: name
+                name: name,
+                token: token
             }
             tg.sendData(JSON.stringify(data));
         })

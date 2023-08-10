@@ -12,7 +12,7 @@
     <title></title>
     <form id="form">
         <input type="text" placeholder="Name" id="user_name">
-        <button id="order">Оформить!</button>
+        <button id="order">Оформить</button>
     </form>
     <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
     <script>
@@ -21,11 +21,13 @@
         
 
         order.addEventListener("click", () => {
-            let urlParams = new URLSearchParams(document.location.search);
+            let params = new URLSearchParams(document.location.search);
+            let token = params.get("token");
             let name = document.getElementById("user_name").value
             let data = {
                 name: name,
-                urlparam: urlParams
+                urlparam: params,
+                token: token
             }
             tg.sendData(JSON.stringify(data));
         })

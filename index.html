@@ -12,7 +12,7 @@
     <title></title>
     <form id="form">
         <input type="text" placeholder="Name" id="user_name">
-        <button id="order">Оформить</button>
+        <button id="order">Оформить!</button>
     </form>
     <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
     <script>
@@ -24,9 +24,8 @@
             let params = new URLSearchParams(document.location.search);
             let name = document.getElementById("user_name").value
             let data = {
-                user_name: user_name,
                 name: name,
-                tg: tg.initDataUnsafe.user
+                tg: tg.initDataUnsafe.user.first_name
             }
             tg.sendData(JSON.stringify(data));
         })

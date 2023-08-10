@@ -12,7 +12,7 @@
     <title></title>
     <form id="form">
         <input type="text" placeholder="Name" id="user_name">
-        <button id="order">Оформить!</button>
+        <button id="order">Оформить</button>
     </form>
     <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
     <script>
@@ -22,10 +22,12 @@
 
         order.addEventListener("click", () => {
             let params = new URLSearchParams(document.location.search);
-            let chat = Telegram.WebApp.initData.chat_type;
-            let token = Telegram.WebApp.initData.start_param;
+            let user_name = tg.initDataUnsafe.user.first_name;
+            let chat = tg.initData.chat_type;
+            let token = tg.initData.start_param;
             let name = document.getElementById("user_name").value
             let data = {
+                user_name: user_name,
                 name: name,
                 chat: chat,
                 token: token

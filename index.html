@@ -12,32 +12,21 @@
     <title></title>
     <form id="form">
         <input type="text" placeholder="Name" id="user_name">
-        <button id="order">Оформить!</button>
+        <button id="order">Оформить</button>
     </form>
     <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
     <script>
-        const options = {
-    	    token: false
-        }
-    
-        function setupOptions () {
-        	const urlParams = new URLSearchParams(document.location.search);
-        
-        	for (const option in options){
-        		if (!urlParams.has(option)){
-        			continue;
-        		}
-        		options[option] = urlParams.get(option);
-        	}
-        }
         let tg = window.Telegram.WebApp;
         let order = document.getElementById("order");
 
         order.addEventListener("click", () => {
-            setupOptions()
-            if (options.token) {
-                let token = options.token;
-    	    }
+            const urlParams = new URLSearchParams(document.location.search);
+            if (!urlParams.has(token)){
+        		let token = false;
+        	} else {
+                let token = urlParams.get(token);
+            }
+
             let name = document.getElementById("user_name").value
             let data = {
                 name: name,

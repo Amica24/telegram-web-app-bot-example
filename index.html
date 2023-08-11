@@ -12,7 +12,7 @@
     <title></title>
     <form id="form">
         <input type="text" placeholder="Name" id="user_name">
-        <button id="order">Оформить</button>
+        <button id="order">Оформить!</button>
     </form>
     <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
     <script>
@@ -24,7 +24,17 @@
             let params = new URLSearchParams(document.location.search);
             let name = document.getElementById("user_name").value
             let data = {
-                name: name
+                name: name,
+                client: 5371026279,
+                color: "Нет цвета",
+                currency: 840,
+                image_path: "user_3901213565/ec96f7bf-9dce-4bbe-b6bb-0f287849b0b0.jpg",
+                item_name: "testt",
+                link: "https://lk.kupivamerike.ru/products/id?val=5966106667",
+                message: "",
+                price_cur: 100,
+                size: "Нет размера",
+                amount: 1
             }
             tg.sendData(JSON.stringify(data));
         })
